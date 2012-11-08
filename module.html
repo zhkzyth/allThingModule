@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<title>Creating and using a Hello World module</title>
+<div id="demo"></div>
+<script src="http://yui.yahooapis.com/3.5.0/build/yui/yui-min.js"></script>
+<script>
+
+YUI.add('hello', function (Y) {
+Y.namespace('Hello');
+Y.Hello.sayHello = function () {
+return 'GREETINGS PROGRAMS';
+};
+});
+
+YUI().use('node-base', 'hello', function (Y) {
+Y.one('#demo').setHTML(Y.Hello.sayHello());
+});
+
+</script>
