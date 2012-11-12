@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<title>Making an element resizable</title>
+<style>
+#demo {
+width: 100px; height: 100px; border: 1px #000 solid; background: #d72;
+position: relative;
+}
+</style>
+<div id="demo"></div>
+<script src='http://yui.yahooapis.com/3.5.0/build/yui/yui-min.js'></script>
+<script>
+// YUI().use('resize', function(Y) {
+//    var resize = new Y.Resize({
+//       node: '#demo'
+//    });
+// });
+
+YUI().use('resize-plugin', 'resize-constrain', function(Y) {
+   var demo = Y.one('#demo');
+   demo.plug(Y.Plugin.Resize);
+   demo.resize.plug(Y.Plugin.ResizeConstrained, {
+      minWidth: 50,
+      maxWidth: 200
+   });
+});
+</script>
