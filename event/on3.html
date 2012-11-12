@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<title>Using object methods as event handlers</title>
+<style>
+.notice { color: #00c; }
+.warning { color: #e80; }
+.caution { color: #f00; }
+</style>
+<p>"Though this be madness, there is method in it."</p>
+<script src="http://yui.yahooapis.com/3.5.0/build/yui/yui-min.js"></script>
+<script>
+// YUI().use('node', function(Y) {
+//    var notifier = {
+//       msgType: 'caution',
+//       mark: function(ev) {
+//          ev.target.addClass(this.msgType);
+//       }
+//    };
+//    Y.one('p').on('click', notifier.mark, notifier);
+// });
+
+// YUI().use('node', function(Y) {
+//    var notifier = {
+//       msgType: ['notice', 'warning', 'caution'],
+//       mark: function(ev, level) {
+//          ev.target.addClass(this.msgType[level]);
+//       }
+//    };
+//    Y.one('p').on('click', notifier.mark, notifier, 2);
+// });
+
+YUI().use('node', function(Y) {
+   var notifier = {
+      msgType: 'caution',
+      mark: function(ev, level) {
+         ev.target.addClass(this.msgType);
+      }
+   };
+   var fn = Y.bind(notifier.mark, notifier); //绑定函数的执行上下文
+   Y.one('p').on('click', fn);
+});
+</script>
