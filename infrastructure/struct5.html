@@ -12,9 +12,13 @@
 <p class="sp">Speed: 0.54926 c</p>
 </div>
 <script src="http://yui.yahooapis.com/3.5.0/build/yui/yui-min.js"></script>
+
 <script>
+
 YUI.add('electron', function(Y) {
+
    var REST_ENERGY = 511.00;
+
    Y.Electron = Y.Base.create('electron', Y.Widget, [], {
       destructor: function() {
          this.get('contentBox').all('p').remove(true);
@@ -59,9 +63,11 @@ YUI.add('electron', function(Y) {
 }, '1.1', {
    requires: ['base-build', 'widget']
 });
+
 YUI().use('electron', function(Y) {
    new Y.Electron({
       srcNode: '#demo'
    }).render();
 });
+
 </script>
